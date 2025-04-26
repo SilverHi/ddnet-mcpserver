@@ -1,0 +1,61 @@
+# 这个工作流将在创建发布时，自动上传Python包到PyPI
+# 更多信息参见: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-python#publishing-to-package-registries
+
+name: 上传Python包到PyPI
+
+on:
+  release:
+    types: [created]
+  # 你也可以添加手动触发选项
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  release-build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"  # 根据你的项目要求的Python版本
+
+      - name: 安装uv并构建发布包
+        run: |
+          curl -LsSf https://astral.sh/uv/install.sh | sh
+          uv pip install build
+          python -m build
+
+      - name: 上传构建产物
+        uses: actions/upload-artifact@v4
+        with:
+          name: release-dists
+          path: dist/
+
+  pypi-publish:
+    runs-on: ubuntu-latest
+    needs:
+      - release-build
+    permissions:
+      # 重要：此权限对于可信发布是必需的
+      id-token: write
+
+    # 使用专用环境进行发布是强烈推荐的做法
+    environment:
+      name: pypi
+      url: https://pypi.org/p/ddnet-mcpserver  # 更新为你的PyPI项目URL
+
+    steps:
+      - name: 获取发布构建物
+        uses: actions/download-artifact@v4
+        with:
+          name: release-dists
+          path: dist/
+
+      - name: 发布到PyPI
+        uses: pypa/gh-action-pypi-publish@release/v1
+        with:
+          packages-dir: dist/
