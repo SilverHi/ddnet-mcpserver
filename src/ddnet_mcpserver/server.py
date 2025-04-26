@@ -19,21 +19,48 @@ file_handler.setFormatter(logging.Formatter('%(asctime)s - %(name)s - %(levelnam
 logger.addHandler(file_handler)
 
 # 创建MCP服务器
-mcp = FastMCP("Demo")
+mcp = FastMCP(
+    name="ddnet_mcp_server",
+    instructions="ddnet配置文件管理工具，（修改配置文件需要在关闭ddnet进程后进行）可以获取ddnet游戏状态，操作配置文件（修改配置文件增加或删除bind，关闭ddnet进程等）"
+)
 
-# 添加一个加法工具
+# 获取ddnet游戏状态, 返回游戏状态
 @mcp.tool()
-def add(a: int, b: int) -> int:
-    """Add two numbers"""
-    logger.info(f"执行加法: {a} + {b}")
-    return a + b
+def get_ddnet_game_status() -> str:
+    """获取ddnet进程状态"""
+    logger.info("获取ddnet进程状态")
+    return "ddnet进程正在运行！"
+# 关闭ddnet进程
+@mcp.tool()
+def stop_ddnet_game() -> str:
+    """关闭ddnet进程"""
+    logger.info("关闭ddnet进程")
+    return "ddnet进程已关闭！"
+# 启动ddnet进程 
+@mcp.tool()
+def start_ddnet_game() -> str:
+    """启动ddnet进程"""
+    logger.info("启动ddnet进程")
+    return "ddnet进程已启动！"
+# 检查按键是否被占用
+@mcp.tool()
+def check_bind(bindkey: str) -> str:
+    """检查按键是否被占用"""
+    logger.info("检查按键是否被占用")
+    return f"按键{bindkey}被占用！"
+# 增加bind
+@mcp.tool()
+def add_bind(bindkey: str, bindvalue: str) -> str:
+    """增加bind"""
+    logger.info("增加bind")
+    return f"按键{bindkey}已增加！"
+# 删除bind
+@mcp.tool()
+def delete_bind(bindkey: str) -> str:
+    """删除bind"""
+    logger.info("删除bind")
+    return f"按键{bindkey}已删除！"
 
-# 添加一个动态问候资源
-@mcp.resource("greeting://{name}")
-def get_greeting(name: str) -> str:
-    """Get a personalized greeting"""
-    logger.info(f"获取问候: {name}")
-    return f"Hello, {name}!"
 
 # 处理终止信号
 def signal_handler(sig, frame):
