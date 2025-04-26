@@ -4,6 +4,8 @@ import logging
 import signal
 import sys
 
+from ddnet_mcpserver.tools.ddnetprocess import get_process_status, stop_process
+
 # 配置日志
 logging.basicConfig(
     level=logging.INFO,
@@ -28,14 +30,12 @@ mcp = FastMCP(
 @mcp.tool()
 def get_ddnet_game_status() -> str:
     """获取ddnet进程状态"""
-    logger.info("获取ddnet进程状态")
-    return "ddnet进程正在运行！"
+    return get_process_status()
 # 关闭ddnet进程
 @mcp.tool()
 def stop_ddnet_game() -> str:
     """关闭ddnet进程"""
-    logger.info("关闭ddnet进程")
-    return "ddnet进程已关闭！"
+    return stop_process()
 # 启动ddnet进程 
 @mcp.tool()
 def start_ddnet_game() -> str:
