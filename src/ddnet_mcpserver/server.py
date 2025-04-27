@@ -4,6 +4,7 @@ import logging
 import signal
 import sys
 
+from ddnet_mcpserver.app import DDNetConfig
 from ddnet_mcpserver.tools.ddnetprocess import get_process_status, stop_process
 
 # 配置日志
@@ -20,10 +21,13 @@ file_handler.setLevel(logging.DEBUG)
 file_handler.setFormatter(logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s'))
 logger.addHandler(file_handler)
 
+# 初始化ddnetconfig获取配置文件
+logger.info("初始化ddnetconfig获取配置文件")
+ddnetconfig = DDNetConfig()
 # 创建MCP服务器
 mcp = FastMCP(
     name="ddnet_mcp_server",
-    instructions="ddnet配置文件管理工具，（修改配置文件需要在关闭ddnet进程后进行）可以获取ddnet游戏状态，操作配置文件（修改配置文件增加或删除bind，关闭ddnet进程等）"
+    instructions="ddnet助手工具，提供以下功能（修改配置文件需要在关闭ddnet进程后进行）可以获取ddnet游戏状态，操作配置文件（修改配置文件增加或删除bind，关闭ddnet进程等），查询玩家分数（points）等游戏数据。"
 )
 
 # 获取ddnet游戏状态, 返回游戏状态
@@ -31,17 +35,6 @@ mcp = FastMCP(
 def get_ddnet_game_status() -> str:
     """获取ddnet进程状态"""
     return get_process_status()
-# 关闭ddnet进程
-@mcp.tool()
-def stop_ddnet_game() -> str:
-    """关闭ddnet进程"""
-    return stop_process()
-# 启动ddnet进程 
-@mcp.tool()
-def start_ddnet_game() -> str:
-    """启动ddnet进程"""
-    logger.info("启动ddnet进程")
-    return "ddnet进程已启动！"
 # 检查按键是否被占用
 @mcp.tool()
 def check_bind(bindkey: str) -> str:
@@ -61,6 +54,11 @@ def delete_bind(bindkey: str) -> str:
     logger.info("删除bind")
     return f"按键{bindkey}已删除！"
 
+@mcp.tool()
+def get_friend_list() -> str:
+    """获取好友列表"""
+    logger.info("获取好友列表")
+    return f"好友列表：{ddnetconfig.get_friend_list()}"
 
 # 处理终止信号
 def signal_handler(sig, frame):
@@ -75,6 +73,7 @@ signal.signal(signal.SIGTERM, signal_handler)
 if __name__ == "__main__":
     logger.info("服务器正在启动...")
     try:
+        
         logger.info("服务器正在运行，按Ctrl+C可以停止服务器...")
         # 尝试明确指定transport参数
         mcp.run(transport="stdio")  # 使用标准输入/输出作为传输方式

@@ -26,4 +26,4 @@ def stop_process():
                 return "DDNet进程已关闭"
         except (psutil.NoSuchProcess, psutil.AccessDenied, psutil.ZombieProcess):
             pass
-    return "DDNet进程未运行"
+    return "DDNet进程未运行" 
