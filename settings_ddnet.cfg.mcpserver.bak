@@ -1,0 +1,163 @@
+cl_antiping 1
+cl_nameplates_strong 1
+cl_showhud_player_position 1
+cl_showhud_player_speed 1
+cl_showhud_player_angle 1
+cl_showfps 1
+cl_show_welcome 0
+cl_languagefile "languages/simplified_chinese.txt"
+cl_download_community_skins 1
+cl_default_zoom 6
+player_skin "kitty_pinky"
+ui_settings_page 2
+ui_toolbox_page 2
+ui_server_address "81.68.70.25:8312"
+ui_mousesens 70
+ui_unread_news 1
+dummy_name "锤人越狠"
+dummy_clan "竹林晚"
+dummy_skin "limekitty"
+cl_skip_start_menu 1
+cl_video_showchat 0
+player_name "皮肤越粉"
+steam_name "xiaoyue"
+cl_assets_entities "Enamel"
+cl_asset_game "rurzofy"
+cl_asset_emoticons "猫猫捏"
+cl_asset_hud "-9ca0cc19eb642a"
+br_filter_string ""
+br_indicate_finished 0
+br_cached_best_serverinfo_url "https://master2.ddnet.org/ddnet/15/servers.json"
+br_sort 1
+gfx_screen_width 2560
+gfx_screen_height 1440
+gfx_screen_refresh_rate 60
+gfx_desktop_width 2560
+gfx_desktop_height 1440
+gfx_fullscreen 2
+gfx_refresh_rate 240
+inp_mousesens 70
+cl_race_binds_set 1
+cl_message_client_color 5635968
+cl_race_ghost 0
+cl_show_others 2
+cl_overlay_entities 100
+cl_show_hook_coll_other 2
+cl_show_hook_coll_own 2
+cl_timeout_code "utDtoibpsDgdkNrt"
+cl_dummy_timeout_code "HPvGfZcQbAtqPyzF"
+cl_timeout_seed "LTCD5XntMXTgM5Hf"
+cl_config_version 1
+gfx_gl_major 3
+gfx_gl_minor 3
+gfx_backend "OpenGL"
+unbindall
+bind a "+left"
+bind b "say \"/r\""
+bind c "say /rank"
+bind d "+right"
+bind e "+toggle inp_mousesens 1 70"
+bind h "toggle cl_dummy_hammer 0 1"
+bind i "+show_chat; chat all /c "
+bind k "kill"
+bind l "say /lock"
+bind m "exec hook_line_off.cfg"
+bind n "exec reset_off.cfg"
+bind p "say /spec"
+bind q "say /pause"
+bind r "+toggle cl_mouse_max_distance 2  400; +toggle inp_mousesens 1 70"
+bind s "+showhookcoll"
+bind t "+show_chat; chat all"
+bind u "exec delay_off.cfg"
+bind v "say \"/tp\""
+bind w "toggle cl_dummy 0 1"
+bind y "spectate 4"
+bind z "exec hdeepfly_off.cfg"
+bind 1 "+weapon1"
+bind 2 "+weapon2"
+bind 3 "+weapon5"
+bind 4 "+weapon4"
+bind 5 "+weapon3"
+bind 8 "dummy_connect"
+bind 0 "zoom"
+bind return "+show_chat; chat all"
+bind tab "+scoreboard"
+bind space "+jump"
+bind minus "zoom-"
+bind equals "zoom+"
+bind leftbracket "+prevweapon"
+bind rightbracket "+nextweapon"
+bind slash "+show_chat; chat all /"
+bind capslock "toggle cl_dummy_copy_moves 0 1"
+bind f1 "toggle_local_console"
+bind f2 "toggle_remote_console"
+bind f3 "vote yes"
+bind f4 "vote no"
+bind f10 "screenshot"
+bind pause "say /pause"
+bind pageup "toggle cl_overlay_entities 0 100"
+bind right "+right"
+bind left "+left"
+bind up "+jump"
+bind kp_1 "say /emote happy 999999"
+bind kp_2 "say /emote angry 999999"
+bind kp_3 "say /emote pain 999999"
+bind kp_4 "say /emote surprise 999999"
+bind kp_5 "say /emote blink 999999"
+bind kp_0 "say /emote normal 999999"
+bind lctrl "+emote"
+bind lshift "+toggle cl_dummy_copy_moves 1 0;+toggle cl_dummy_control 1 0 ;+toggle cl_dummy_hook 1 0"
+bind rshift "+spectate"
+bind mouse1 "+fire;+toggle cl_dummy_hammer 1 0"
+bind mouse2 "+hook"
+bind mouse3 "+spectate"
+bind mouse4 "toggle cl_dummy_hammer 0 1"
+bind mouse5 "+toggle cl_dummy_hammer 1 0"
+bind mousewheelup "emote 0"
+bind mousewheeldown "emote 2"
+add_friend "飞翔的翅膀" ""
+add_friend "胡胡" ""
+add_friend "三哼经" ""
+add_friend "六" "竹林晚"
+add_friend "我超能吃的" "入帘青"
+add_friend "Mbailang" ""
+add_friend "汉堡" ""
+add_friend "烧饼" "Fight"
+add_friend "" "竹林晚"
+add_friend "铁锤萌妹" "竹林晚"
+add_friend "erliu26" ""
+add_friend "尼古二狗子" ""
+add_friend "xiaohao" ""
+add_friend "猫猫" ""
+add_friend "软萌子凉凉" ""
+add_friend "洋芋片" ""
+add_friend "逍遥" ""
+add_friend "Kosak" ""
+add_friend "momo1189201103" "竹林晚"
+add_friend "柚仔" ""
+add_friend "橙子" ""
+add_friend "采集" ""
+add_friend "Ttkk6066" ""
+add_friend "大梦一场" ""
+add_friend "精准采集" ""
+add_friend "stt" "竹林晚"
+add_friend "Deity" ""
+add_friend "washiqishi" ""
+add_friend "Shake" ""
+add_friend "小王不会玩" ""
+add_friend "灰太狼" ""
+add_friend "笨蛋毛毛" ""
+add_friend "土豆泥" ""
+add_friend "笨蛋" ""
+add_friend "约定" "不要浪"
+add_friend "重生成反派" "Rebirth"
+add_friend "吧唧" ""
+add_friend "Laiki" "念峰峰"
+add_friend "青菜" ""
+add_friend "萝卜儿" ""
+add_friend "小脑斧" "佰佬汇"
+add_friend "彩椒" ""
+add_friend "桃气绵绵冰" ""
+add_friend "sakura" ""
+add_friend "化骨咩咩掌" ""
+add_friend "橡皮鸭" ""
